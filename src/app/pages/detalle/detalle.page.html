@@ -20,5 +20,6 @@
   <p>
     {{ (song | async)?.songDescription }}
   </p>
+  <ion-button expand="block" [routerLink]="['/update/', (song | async)?.id]">ACTUALIZAR CANCIÓN</ion-button>
   <ion-button expand="block" (click)="deleteSong()"> <ion-icon name="trash-outline"></ion-icon>ELIMINAR CANCIÓN</ion-button>
 </ion-content>
