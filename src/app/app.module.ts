@@ -11,6 +11,7 @@ import { firebaseConfig } from './credenciales';
 import {AngularFireModule}  from '@angular/fire/compat';
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

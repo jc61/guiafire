@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-button routerLink="/create-recording" title="Add Recording Studios">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Recording Studios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of recordingList | async" routerLink="/detalle-recording/{{item.id}}">
+    <ion-card-header>
+      {{item.nameRecording}}
+    </ion-card-header>
+    <ion-card-content>
+      Type of melody: {{ item.type_of_melody }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

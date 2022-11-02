@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ (recording | async)?.nameRecording }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Recording Studios</h3>
+  <p>
+    {{ (recording | async)?.nameRecording }}
+  </p>
+  <h3>Type of melody</h3>
+  <p>
+    {{ (recording | async)?.type_of_melody }}. 
+  </p>
+  <h3>Number of cabins</h3>
+  <p>
+    {{ (recording | async)?.number_of_cabins }}
+  </p>
+  <h3>Owner</h3>
+  <p>
+    {{ (recording | async)?.owner }}
+  </p>
+  <ion-button expand="block" [routerLink]="['/update-recording/', (recording | async)?.id]">UPDATE REGISTER</ion-button>
+  <ion-button expand="block" (click)="deleteRecording()"> <ion-icon name="trash-outline"></ion-icon>DELETE REGISTER</ion-button>
+</ion-content>

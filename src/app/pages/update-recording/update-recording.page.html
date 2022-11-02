@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Update Recording Studios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Name Recording</ion-label>
+    <ion-input type="text" [(ngModel)]="item.nameRecording" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Artist Name</ion-label>
+    <ion-input [(ngModel)]="item.type_of_melody" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Number Of Cabins</ion-label>
+    <ion-input [(ngModel)]="item.number_of_cabins" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Owner</ion-label>
+    <ion-textarea [(ngModel)]="item.owner" required></ion-textarea>
+  </ion-item>
+
+  <ion-button class="ion-padding" color="primary" expand="full" (click)="updateRecording(item)">Update</ion-button>
+  <ion-button class="ion-padding" color="light" expand="full" [routerLink]="['/recording-studios']">Back</ion-button>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Recording Studios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="createRecordingForm" (submit)="createRecording()">
+    <ion-item>
+      <ion-label stacked>Name Recording</ion-label>
+      <ion-input formControlName="nameRecording" type="text" placeholder="What's this name?"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Type Of Melody</ion-label>
+      <ion-input formControlName="type_of_melody" type="text" placeholder="What's this melody?"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Number Of Cabins</ion-label>
+      <ion-input formControlName="number_of_cabins" type="text" placeholder="What's the number of cabins?"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Owner</ion-label>
+      <ion-input formControlName="owner" type="text" placeholder="Who's the owner?"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="!createRecordingForm.valid"> Add Recording </ion-button>
+  </form>
+</ion-content>

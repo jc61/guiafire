@@ -23,6 +23,26 @@ const routes: Routes = [
     path: 'update/:id',
     loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
   },
+  {
+    path: 'singers',
+    loadChildren: () => import('./pages/singers/singers.module').then( m => m.SingersPageModule)
+  },
+  {
+    path: 'recording-studios',
+    loadChildren: () => import('./pages/recording-studios/recording-studios.module').then( m => m.RecordingStudiosPageModule)
+  },
+  {
+    path: 'detalle-recording/:id',
+    loadChildren: () => import('./pages/detalle-recording/detalle-recording.module').then( m => m.DetalleRecordingPageModule)
+  },
+  {
+    path: 'update-recording/:id',
+    loadChildren: () => import('./pages/update-recording/update-recording.module').then( m => m.UpdateRecordingPageModule)
+  },
+  {
+    path: 'create-recording',
+    loadChildren: () => import('./pages/create-recording/create-recording.module').then( m => m.CreateRecordingPageModule)
+  },
 ];
 
 @NgModule({
