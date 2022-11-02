@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Song } from 'src/app/song.interface';
+import { ImagesService } from 'src/app/pages/images.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
+
   getRecordingList() {
     return this.firestore.collection(`recordingList`)
   }
 
-  constructor(public firestore: AngularFirestore) { }
+  constructor(public firestore: AngularFirestore, private imagesService: ImagesService) { }
 
   createSong(albumName: string, artistName: string, songDescription: string, songName: string) {
     const id = this.firestore.createId()
@@ -40,5 +42,10 @@ export class FirestoreService {
 
   deleteRecording(recordingId: string): Promise<void> {
     return this.firestore.doc(`recordingList/${recordingId}`).delete();
+  }
+
+  createAlbumImage() {
+    const images = this.imagesService.getImages() 
+    return this.firestore.doc(`imageList`).set({images})
   }
 }

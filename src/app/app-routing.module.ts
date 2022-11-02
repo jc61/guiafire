@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'create-recording',
     loadChildren: () => import('./pages/create-recording/create-recording.module').then( m => m.CreateRecordingPageModule)
   },
+  {
+    path: 'images',
+    loadChildren: () => import('./pages/images/images.module').then( m => m.ImagesPageModule)
+  },
 ];
 
 @NgModule({
