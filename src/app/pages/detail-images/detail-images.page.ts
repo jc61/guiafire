@@ -10,6 +10,7 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { ImagesService } from '../images.service';
 import { Image } from 'src/app/image.interface';
+import { FirestoreService } from 'src/app/services/data/firestore.service';
 
 @Component({
   selector: 'app-detail-images',
@@ -19,7 +20,9 @@ import { Image } from 'src/app/image.interface';
 export class DetailImagesPage implements OnInit {
 
   images:any={};
+  img:any={}
   isCargando: boolean = true;
+  imagesList: any
 
   constructor(
     private imagesService:ImagesService, 
@@ -28,11 +31,15 @@ export class DetailImagesPage implements OnInit {
     private loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private firestoreService: FirestoreService,
   ) { }
 
   ngOnInit() {
-    let id= this.activatedRoute.snapshot.paramMap.get('id');
+    const id= this.activatedRoute.snapshot.paramMap.get('id');
+    this.firestoreService.getImgDetalle(id).subscribe( res => {
+      this.imagesList = res
+    });
     this.imagesService.getImagesDetail(id).subscribe(resp => {
       this.images = resp
       this.isCargando = false
@@ -40,33 +47,25 @@ export class DetailImagesPage implements OnInit {
   }
 
   async addImage(images: Image) {
-
-    if (this.formValidation()) {
-
+    
+    if(this.imagesList.length > 0){
+      this.showToast("Esta imagen ya existe en la colección de firestore");
+    } else {
       let loader = await this.loadingCtrl.create({
         message: "Add Image..."
       });
       loader.present();
-
+  
       try {
         await this.firestore.collection("imageList").add(images);
       } catch (e) {
         this.showToast(e);
       }
-
+  
       loader.dismiss();
-
+  
       this.navCtrl.navigateRoot("images");
     }
-  }
-
-  formValidation() {
-    if (!this.images.title) {
-      this.showToast("Por favor ingresa un  titulo");
-      return false;
-    }
-
-    return true;
   }
 
   showToast(message: string) {
@@ -76,6 +75,6 @@ export class DetailImagesPage implements OnInit {
         duration: 3000
       })
       .then(toastData => toastData.present());
-  }
+}
 
 }

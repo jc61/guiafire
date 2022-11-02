@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Song } from 'src/app/song.interface';
+import { Image } from 'src/app/image.interface';
 import { ImagesService } from 'src/app/pages/images.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
@@ -34,6 +35,11 @@ export class FirestoreService {
 
   getRecordingDetalle(recordingId: string): AngularFirestoreDocument<Song> {
     return this.firestore.collection(`recordingList`).doc(recordingId);
+  }
+
+  getImgDetalle(imgId: string): any {
+    const result = this.firestore.collection(`imageList`, ref => ref.where('id', '==', parseInt(imgId)));
+    return result.valueChanges();
   }
 
   deleteSong(songId: string): Promise<void> {
