@@ -8,9 +8,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="img_t" >
+  <div class="loader" *ngIf="isCargando">
+    <span>Cargando...</span>
+  </div>
   <ion-grid>
-    <ion-row>
-      <ion-col class="img-wrapper"  sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of images | async">
+    <ion-row *ngIf="!isCargando">
+      <ion-col class="img-wrapper"  sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of images" [routerLink]="['/','detail-images',image.id]">
         <ion-img src="{{image.thumbnailUrl}}"></ion-img>
       </ion-col>
     </ion-row>

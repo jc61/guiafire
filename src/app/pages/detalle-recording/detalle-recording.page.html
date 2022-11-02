@@ -24,6 +24,8 @@
   <p>
     {{ (recording | async)?.owner }}
   </p>
-  <ion-button expand="block" [routerLink]="['/update-recording/', (recording | async)?.id]">UPDATE REGISTER</ion-button>
-  <ion-button expand="block" (click)="deleteRecording()"> <ion-icon name="trash-outline"></ion-icon>DELETE REGISTER</ion-button>
+  <div style="text-align: center;">
+    <ion-button [routerLink]="['/update-recording/', (recording | async)?.id]" title="Actualizar Registro"><ion-icon slot="icon-only" name="build-outline"></ion-icon></ion-button>
+    <ion-button (click)="deleteRecording()" title="Eliminar Registro"><ion-icon slot="icon-only" name="trash-outline"></ion-icon></ion-button>
+  </div>
 </ion-content>

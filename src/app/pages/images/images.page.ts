@@ -10,12 +10,19 @@ import { ImagesService } from '../images.service';
 export class ImagesPage implements OnInit {
 
   images: Observable<any>
+  isCargando: boolean = true;
 
   constructor(
     private imagesService: ImagesService
-  ) { this.images = this.imagesService.getImages() }
+  ) { 
+    
+   }
 
   ngOnInit() {
+    this.imagesService.getImages().subscribe(resp => {
+      this.images = resp
+      this.isCargando = false
+    });
   }
 
 }

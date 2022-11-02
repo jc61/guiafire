@@ -43,9 +43,4 @@ export class FirestoreService {
   deleteRecording(recordingId: string): Promise<void> {
     return this.firestore.doc(`recordingList/${recordingId}`).delete();
   }
-
-  createAlbumImage() {
-    const images = this.imagesService.getImages() 
-    return this.firestore.doc(`imageList`).set({images})
-  }
 }

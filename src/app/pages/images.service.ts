@@ -12,4 +12,8 @@ export class ImagesService {
   getImages(): Observable<any>{
     return this.http.get('https://jsonplaceholder.typicode.com/photos')
   }
+
+  getImagesDetail(id): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/photos/' + id)
+  }
 }
