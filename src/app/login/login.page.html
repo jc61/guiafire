@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn login auth-page">
+  <h4 style="text-align: center;">Iniciar Sesión</h4>
+  <form class="list-form" [formGroup]="loginForm" (ngSubmit)="loginUser($event)">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email" autocapitalize="off" autocomplete="off" autocorrect="off" required></ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="emailField.errors && emailField.dirty">
+      <ion-label *ngIf="emailField.hasError('email')" text-wrap> email invalido </ion-label>
+      <ion-label *ngIf="emailField.hasError('required')" text-wrap> el email es requerido </ion-label>
+    </ion-chip>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password" minlength="6" required></ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="passField.errors && passField.dirty">
+      <ion-label *ngIf="passField.hasError('minlength')" text-wrap> debe tener un minimo de 6 caracteres la contraseña </ion-label>
+      <ion-label *ngIf="passField.hasError('required')" text-wrap> la contraseña es requerida </ion-label>
+    </ion-chip>
+    <br>
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <a ion-text routerLink="../recover/" ><strong>Has olvidado tu contraseña?</strong></a><br>
+      </ion-col>
+    </ion-row>
+    <br>
+    <button class="cssbuttons-io-button" type="submit"> Ingresar
+      <div class="icon">
+        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
+      </div>
+    </button>
+    <br>
+    <div style="text-align: center;" margin-top>
+      <span ion-text>Nuevo aquí? <a color="secondary" routerLink="../register/"> <strong> Registrate </strong></a></span>
+    </div>
+  </form>
+</ion-content>
