@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth'
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class AuthService {
     password); 
   }
 
-  singupUser(email: string, password: string): Promise<any> {
+  signupUser(email: string, password: string): Promise<any> {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);

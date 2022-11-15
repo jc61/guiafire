@@ -23,7 +23,7 @@ export class RegisterPage implements OnInit {
     event.preventDefault();
     if(this.registerForm.valid){
       const value = this.registerForm.value;
-      this.authService.singupUser(value.email, value.password).then(()=>{
+      this.authService.signupUser(value.email, value.password).then(()=>{
         this.router.navigateByUrl('login');
       }, async error=>{
         const alert = await this.alertController.create({

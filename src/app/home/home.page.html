@@ -21,12 +21,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let song of songList | async" routerLink="/detalle/{{song.id}}">
-    <ion-card-header>
-      {{song.songName}}
-    </ion-card-header>
-    <ion-card-content>
-      Artist Name: {{ song.artistName }}
-    </ion-card-content>
-  </ion-card>
+  <div class="spinner" *ngIf="isCargando">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+    <div class="dot3"></div>
+  </div>
+  <div *ngIf="!isCargando">
+    <ion-card *ngFor="let song of songList" routerLink="/detalle/{{song.id}}" >
+      <ion-card-header>
+        {{song.songName}}
+      </ion-card-header>
+      <ion-card-content>
+        Artist Name: {{ song.artistName }}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

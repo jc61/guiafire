@@ -12,13 +12,17 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   songList:any = [];
+  isCargando: boolean = true;
 
   constructor(
     private firestoreService: FirestoreService, private router: Router
   ) {}
 
   ngOnInit(){
-    this.songList = this.firestoreService.getSongList().valueChanges()
+    this.firestoreService.getSongList().valueChanges().subscribe(resp => {
+      this.songList = resp
+      this.isCargando = false
+    });
   }
 
 }

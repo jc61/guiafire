@@ -31,9 +31,10 @@ export class RecoverPage implements OnInit {
           });
           await alert.present(); 
         },
-          async error=>{
+          async ()=>{
             const errorAlert = await this.ac.create({
-              message: error.message, buttons: [{text: 'OK', role: 'cancel'}],
+              message: "El usuario no existe. ",
+              buttons: [{text: 'OK', role: 'cancel'}],
             });
             await errorAlert.present();
           }
