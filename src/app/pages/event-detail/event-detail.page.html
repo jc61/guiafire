@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ (currentEvent | async)?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <h1></h1>
+      <p>Ticket: <strong>{{ (currentEvent | async)?.price |currency }}</strong></p>
+      <p>Date: <strong>{{ (currentEvent | async)?.date |date }}</strong></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

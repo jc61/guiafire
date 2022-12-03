@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="margin-left: 80px;">
-      Songs
+    <ion-title style="margin-left: 70px;">
+      Home
     </ion-title>
     <ion-buttons>
       <ion-button routerLink="/create" title="Add Song">
@@ -16,11 +16,20 @@
       <ion-button routerLink="/images" title="Images">
         <ion-icon name="images-outline"></ion-icon>
       </ion-button>
+      <ion-button title="Cerrar Sesión" (click)="cerrarSesion()" style="margin-left: 70px;">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-button expand="block" color="primary" routerLink="/event-create">
+    Crear un nuevo evento
+  </ion-button>
+  <ion-button expand="block" color="primary" routerLink="/event-list">
+    Ver tus eventos
+  </ion-button>
   <div class="spinner" *ngIf="isCargando">
     <div class="dot1"></div>
     <div class="dot2"></div>

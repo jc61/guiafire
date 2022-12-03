@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth'
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
     password:string
   ): Promise<firebase.auth.UserCredential> {
     return firebase.auth().signInWithEmailAndPassword(email,
-    password); 
+    password);
   }
 
   signupUser(email: string, password: string): Promise<any> {
@@ -27,8 +28,12 @@ export class AuthService {
     return firebase.auth().sendPasswordResetEmail(email)
   }
 
-  logoutUser():Promise<void> {
+  logoutUser(): Promise<void> {
     return firebase.auth().signOut()
+  }
+
+  getUser(): any { 
+    return firebase.auth().currentUser;
   }
 
 }
