@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/event-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Asistentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="inset">
+    <ion-list-header> <ion-label>Asistentes al concierto</ion-label> </ion-list-header>
+    <ion-item *ngFor="let asistentes of asistenteList |async">
+      <ion-label>
+        <strong>{{ asistentes.name }}</strong>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

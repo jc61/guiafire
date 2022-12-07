@@ -12,7 +12,23 @@
     <ion-card-content>
       <h1></h1>
       <p>Ticket: <strong>{{ (currentEvent | async)?.price |currency }}</strong></p>
-      <p>Date: <strong>{{ (currentEvent | async)?.date |date }}</strong></p>
+      <p>Fecha: <strong>{{ (currentEvent | async)?.date |date }}</strong></p>
+      <p>Asistentes: <strong>{{ (attendees | async)?.length }}</strong></p>
     </ion-card-content>
   </ion-card>
+  <div style="text-align: center;">
+    <button routerLink="/asistente">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Agregar Asistentes
+      </span>
+    </button>
+  </div>
+  <br>
+  <div style="text-align: center;">
+    <button routerLink="/asistentes">
+      <span>
+        <ion-icon name="eye" style="color: white;"></ion-icon> Ver Asistentes
+      </span>
+    </button>
+  </div>
 </ion-content>

@@ -49,4 +49,8 @@ export class FirestoreService {
   deleteRecording(recordingId: string): Promise<void> {
     return this.firestore.doc(`recordingList/${recordingId}`).delete();
   }
+
+  getEventList(): any{
+    return this.firestore.collection(`eventList`)
+  }
 }

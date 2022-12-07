@@ -78,7 +78,15 @@ const routes: Routes = [
   {
     path: 'event-list',
     loadChildren: () => import('./pages/event-list/event-list.module').then( m => m.EventListPageModule)
+  },  {
+    path: 'asistente',
+    loadChildren: () => import('./pages/asistente/asistente.module').then( m => m.AsistentePageModule)
   },
+  {
+    path: 'asistentes',
+    loadChildren: () => import('./pages/asistentes/asistentes.module').then( m => m.AsistentesPageModule)
+  },
+
 
 
 ];

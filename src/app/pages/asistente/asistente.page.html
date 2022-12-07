@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/event-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 style="text-align: center;">Agregar Asistentes</h2>
+  <ion-item>
+    <ion-label position="stacked">Nombre del Asistente</ion-label>
+    <ion-input [(ngModel)]="attendeeName" type="text" placeholder="What's your name?"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="addAttendee(attendeeName)" > Agregar </ion-button>
+</ion-content>
